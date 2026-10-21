@@ -1,0 +1,47 @@
+groups:
+  - name: atp
+    rules:
+      - alert: StaleFeed
+        expr: atp_feed_lag_ms > 5000
+        for: 15s
+        labels:
+          severity: page
+        annotations:
+          summary: Market data is older than the stale-feed limit
+          description: Feed lag is {{ $value }} ms. New risk fails closed until a fresh tick arrives.
+
+      - alert: ReconMismatch
+        expr: atp_recon_mismatches > 0 or atp_halted == 1
+        for: 0s
+        labels:
+          severity: page
+        annotations:
+          summary: Partition halted or reconciliation mismatched
+          description: Do not resume trading until the journal and the broker books have been compared by hand.
+
+      - alert: RejectSpike
+        expr: sum(rate(atp_risk_rejects_total[1m])) > 5
+        for: 1m
+        labels:
+          severity: ticket
+        annotations:
+          summary: Pre-trade rejects are elevated
+          description: Risk rejects per second are above 5 for a minute. Check the rule label.
+
+      - alert: LatencySlo
+        expr: histogram_quantile(0.99, sum(rate(atp_hot_path_ms_bucket[5m])) by (le)) > 10 or histogram_quantile(0.99, sum(rate(atp_e2e_ms_bucket[5m])) by (le)) > 100
+        for: 2m
+        labels:
+          severity: ticket
+        annotations:
+          summary: Latency SLO breached
+          description: Hot-path p99 is above 10 ms or signal-to-gateway p99 is above 100 ms.
+
+      - alert: KillSwitch
+        expr: atp_kill_switch == 1
+        for: 0s
+        labels:
+          severity: page
+        annotations:
+          summary: A kill switch is latched
+          description: Open orders in the killed scope are being cancelled. New risk in that scope is closed.

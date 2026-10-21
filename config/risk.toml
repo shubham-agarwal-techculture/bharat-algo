@@ -1,0 +1,81 @@
+# Versioned risk limits for account ACC1.
+# Money fields are decimal INR. The loader scales them by 10_000; do not use floats.
+# Hot reload journals a new version. The version must strictly increase.
+
+version = 1
+account_id = "ACC1"
+max_order_qty = 100000
+max_order_value = "50000000"
+max_position_qty = 100000
+max_exposure = "50000000"
+max_margin = "10000000"
+account_daily_loss = "100000"
+account_ops = 40
+segment_ops = 20
+fat_finger_price_bps = 500
+fat_finger_qty = 50000
+fat_finger_notional = "5000000"
+stale_feed_ms = 5000
+unknown_timeout_ms = 500
+max_resends = 1
+margin_cm_bps = 10000
+margin_fo_bps = 1500
+margin_cd_bps = 500
+margin_co_bps = 1000
+holidays = [20260126]
+
+[[strategy]]
+strategy_id = "bse-cd"
+algo_id = "ALGOBSCD001"
+daily_loss = "100000"
+max_order_qty = 100000
+max_ops = 20
+
+[[strategy]]
+strategy_id = "bse-cm"
+algo_id = "ALGOBSCM001"
+daily_loss = "100000"
+max_order_qty = 100000
+max_ops = 20
+
+[[strategy]]
+strategy_id = "bse-fo"
+algo_id = "ALGOBSFO001"
+daily_loss = "100000"
+max_order_qty = 100000
+max_ops = 20
+
+[[strategy]]
+strategy_id = "manual"
+algo_id = "ALGOMANUAL1"
+daily_loss = "100000"
+max_order_qty = 100000
+max_ops = 20
+
+[[strategy]]
+strategy_id = "mcx-co"
+algo_id = "ALGOMCX0001"
+daily_loss = "100000"
+max_order_qty = 100000
+max_ops = 20
+
+[[strategy]]
+strategy_id = "nse-cd"
+algo_id = "ALGONSCD001"
+daily_loss = "100000"
+max_order_qty = 100000
+max_ops = 20
+
+[[strategy]]
+strategy_id = "nse-cm"
+algo_id = "ALGONSCM001"
+daily_loss = "100000"
+max_order_qty = 100000
+max_ops = 20
+
+[[strategy]]
+strategy_id = "nse-fo"
+algo_id = "ALGONSFO001"
+daily_loss = "100000"
+max_order_qty = 100000
+max_ops = 20

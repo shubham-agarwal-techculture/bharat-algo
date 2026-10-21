@@ -1,0 +1,299 @@
+# Instrument master for the sample book.
+# Prices are decimal strings so ticks of 0.05 and 0.0025 stay exact.
+# Sessions are IST, end-exclusive. MCX includes the evening session.
+
+[[instrument]]
+id = "BSE:CD:USDINR25OCTFUT"
+exchange = "BSE"
+segment = "CD"
+symbol = "USDINR25OCTFUT"
+lot_size = 1
+tick_size = "0.0025"
+expiry = 20261027
+freeze_qty = 1000
+band_low = "70"
+band_high = "110"
+circuit_bps = 1000
+sessions = ["09:00-17:00"]
+
+[[instrument]]
+id = "BSE:CM:RELIANCE"
+exchange = "BSE"
+segment = "CM"
+symbol = "RELIANCE"
+lot_size = 1
+tick_size = "0.05"
+freeze_qty = 0
+band_low = "2000"
+band_high = "4000"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "BSE:CM:TCS"
+exchange = "BSE"
+segment = "CM"
+symbol = "TCS"
+lot_size = 1
+tick_size = "0.05"
+freeze_qty = 0
+band_low = "2500"
+band_high = "5000"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "BSE:FO:SENSEX25OCT80000CE"
+exchange = "BSE"
+segment = "FO"
+symbol = "SENSEX25OCT80000CE"
+lot_size = 20
+tick_size = "0.05"
+expiry = 20261027
+strike = "80000"
+option_type = "CE"
+freeze_qty = 500
+band_low = "0.05"
+band_high = "15000"
+circuit_bps = 2000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "BSE:FO:SENSEX25OCTFUT"
+exchange = "BSE"
+segment = "FO"
+symbol = "SENSEX25OCTFUT"
+lot_size = 20
+tick_size = "0.05"
+expiry = 20261027
+freeze_qty = 500
+band_low = "50000"
+band_high = "120000"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "MCX:CO:CRUDEOIL25NOVFUT"
+exchange = "MCX"
+segment = "CO"
+symbol = "CRUDEOIL25NOVFUT"
+lot_size = 1
+tick_size = "1"
+expiry = 20261118
+freeze_qty = 100
+band_low = "1000"
+band_high = "20000"
+circuit_bps = 1000
+sessions = ["09:00-17:00", "17:00-23:30"]
+
+[[instrument]]
+id = "MCX:CO:GOLD25DECFUT"
+exchange = "MCX"
+segment = "CO"
+symbol = "GOLD25DECFUT"
+lot_size = 1
+tick_size = "1"
+expiry = 20261204
+freeze_qty = 100
+band_low = "50000"
+band_high = "150000"
+circuit_bps = 1000
+sessions = ["09:00-17:00", "17:00-23:30"]
+
+[[instrument]]
+id = "MCX:CO:NATURALGAS25NOVFUT"
+exchange = "MCX"
+segment = "CO"
+symbol = "NATURALGAS25NOVFUT"
+lot_size = 1
+tick_size = "0.1"
+expiry = 20261124
+freeze_qty = 200
+band_low = "50"
+band_high = "1000"
+circuit_bps = 1000
+sessions = ["09:00-17:00", "17:00-23:30"]
+
+[[instrument]]
+id = "MCX:CO:SILVER25DECFUT"
+exchange = "MCX"
+segment = "CO"
+symbol = "SILVER25DECFUT"
+lot_size = 1
+tick_size = "1"
+expiry = 20261204
+freeze_qty = 100
+band_low = "60000"
+band_high = "200000"
+circuit_bps = 1000
+sessions = ["09:00-17:00", "17:00-23:30"]
+
+[[instrument]]
+id = "NSE:CD:EURINR25OCTFUT"
+exchange = "NSE"
+segment = "CD"
+symbol = "EURINR25OCTFUT"
+lot_size = 1
+tick_size = "0.0025"
+expiry = 20261027
+freeze_qty = 1000
+band_low = "80"
+band_high = "130"
+circuit_bps = 1000
+sessions = ["09:00-17:00"]
+
+[[instrument]]
+id = "NSE:CD:USDINR25OCT85CE"
+exchange = "NSE"
+segment = "CD"
+symbol = "USDINR25OCT85CE"
+lot_size = 1
+tick_size = "0.0025"
+expiry = 20261027
+strike = "85"
+option_type = "CE"
+freeze_qty = 1000
+band_low = "0.0025"
+band_high = "10"
+circuit_bps = 2000
+sessions = ["09:00-17:00"]
+
+[[instrument]]
+id = "NSE:CD:USDINR25OCTFUT"
+exchange = "NSE"
+segment = "CD"
+symbol = "USDINR25OCTFUT"
+lot_size = 1
+tick_size = "0.0025"
+expiry = 20261027
+freeze_qty = 1000
+band_low = "70"
+band_high = "110"
+circuit_bps = 1000
+sessions = ["09:00-17:00"]
+
+[[instrument]]
+id = "NSE:CM:HDFCBANK"
+exchange = "NSE"
+segment = "CM"
+symbol = "HDFCBANK"
+lot_size = 1
+tick_size = "0.05"
+freeze_qty = 0
+band_low = "1200"
+band_high = "2200"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "NSE:CM:INFY"
+exchange = "NSE"
+segment = "CM"
+symbol = "INFY"
+lot_size = 1
+tick_size = "0.05"
+freeze_qty = 0
+band_low = "1000"
+band_high = "2500"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "NSE:CM:RELIANCE"
+exchange = "NSE"
+segment = "CM"
+symbol = "RELIANCE"
+lot_size = 1
+tick_size = "0.05"
+freeze_qty = 0
+band_low = "2000"
+band_high = "4000"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "NSE:CM:TCS"
+exchange = "NSE"
+segment = "CM"
+symbol = "TCS"
+lot_size = 1
+tick_size = "0.05"
+freeze_qty = 0
+band_low = "2500"
+band_high = "5000"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "NSE:FO:BANKNIFTY25OCTFUT"
+exchange = "NSE"
+segment = "FO"
+symbol = "BANKNIFTY25OCTFUT"
+lot_size = 15
+tick_size = "0.05"
+expiry = 20261027
+freeze_qty = 900
+band_low = "30000"
+band_high = "80000"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "NSE:FO:NIFTY25OCT24000CE"
+exchange = "NSE"
+segment = "FO"
+symbol = "NIFTY25OCT24000CE"
+lot_size = 75
+tick_size = "0.05"
+expiry = 20261027
+strike = "24000"
+option_type = "CE"
+freeze_qty = 1800
+band_low = "0.05"
+band_high = "5000"
+circuit_bps = 2000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "NSE:FO:NIFTY25OCT24000PE"
+exchange = "NSE"
+segment = "FO"
+symbol = "NIFTY25OCT24000PE"
+lot_size = 75
+tick_size = "0.05"
+expiry = 20261027
+strike = "24000"
+option_type = "PE"
+freeze_qty = 1800
+band_low = "0.05"
+band_high = "5000"
+circuit_bps = 2000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "NSE:FO:NIFTY25OCTFUT"
+exchange = "NSE"
+segment = "FO"
+symbol = "NIFTY25OCTFUT"
+lot_size = 75
+tick_size = "0.05"
+expiry = 20261027
+freeze_qty = 1800
+band_low = "15000"
+band_high = "40000"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]
+
+[[instrument]]
+id = "NSE:FO:RELIANCE25OCTFUT"
+exchange = "NSE"
+segment = "FO"
+symbol = "RELIANCE25OCTFUT"
+lot_size = 250
+tick_size = "0.05"
+expiry = 20261027
+freeze_qty = 5000
+band_low = "2000"
+band_high = "4000"
+circuit_bps = 1000
+sessions = ["09:15-15:30"]

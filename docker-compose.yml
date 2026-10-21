@@ -1,0 +1,51 @@
+# Local observability around the paper engine.
+# Grafana: http://127.0.0.1:13300  (anonymous admin)
+# Prometheus: http://127.0.0.1:19090
+# Engine metrics: http://127.0.0.1:18420/metrics
+# OTLP HTTP: 127.0.0.1:14318
+
+services:
+  engine:
+    build: .
+    ports:
+      - "18420:18420"
+    volumes:
+      - atp-data:/data
+    depends_on:
+      - otel
+
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.enable-lifecycle
+    ports:
+      - "19090:9090"
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./deploy/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+
+  grafana:
+    image: grafana/grafana:11.3.0
+    ports:
+      - "13300:3000"
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_USERS_DEFAULT_THEME: light
+    volumes:
+      - ./deploy/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./deploy/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+
+  otel:
+    image: otel/opentelemetry-collector:0.114.0
+    command: ["--config=/etc/otel/config.yaml"]
+    ports:
+      - "14318:4318"
+    volumes:
+      - ./deploy/otel/config.yaml:/etc/otel/config.yaml:ro
+
+volumes:
+  atp-data:

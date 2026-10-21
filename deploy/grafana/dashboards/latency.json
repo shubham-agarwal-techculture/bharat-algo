@@ -1,0 +1,53 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "ms" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 0 },
+      "id": 1,
+      "targets": [
+        { "expr": "histogram_quantile(0.50, sum(rate(atp_hot_path_ms_bucket[5m])) by (le))", "legendFormat": "p50", "refId": "A" },
+        { "expr": "histogram_quantile(0.99, sum(rate(atp_hot_path_ms_bucket[5m])) by (le))", "legendFormat": "p99", "refId": "B" },
+        { "expr": "histogram_quantile(0.999, sum(rate(atp_hot_path_ms_bucket[5m])) by (le))", "legendFormat": "p99.9", "refId": "C" }
+      ],
+      "title": "Hot path (decide + apply + journal)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "ms" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 0 },
+      "id": 2,
+      "targets": [
+        { "expr": "histogram_quantile(0.50, sum(rate(atp_e2e_ms_bucket[5m])) by (le))", "legendFormat": "p50", "refId": "A" },
+        { "expr": "histogram_quantile(0.99, sum(rate(atp_e2e_ms_bucket[5m])) by (le))", "legendFormat": "p99", "refId": "B" },
+        { "expr": "histogram_quantile(0.999, sum(rate(atp_e2e_ms_bucket[5m])) by (le))", "legendFormat": "p99.9", "refId": "C" }
+      ],
+      "title": "Signal to gateway",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 9 },
+      "id": 3,
+      "options": { "content": "SLO: hot-path p99 under 10 ms, signal-to-gateway p99 under 100 ms. Exact percentiles for the current process are also on `GET /latency`. The broker and the exchange sit outside these histograms.", "mode": "markdown" },
+      "title": "SLO",
+      "type": "text"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["atp", "latency"],
+  "templating": { "list": [] },
+  "time": { "from": "now-15m", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Latency",
+  "uid": "atp-latency",
+  "version": 1
+}

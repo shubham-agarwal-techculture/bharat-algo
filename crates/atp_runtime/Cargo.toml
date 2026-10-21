@@ -1,0 +1,36 @@
+[package]
+name = "atp_runtime"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Runtime, simulator, gateways, and binaries"
+
+[dependencies]
+atp_core = { path = "../atp_core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = { workspace = true }
+thiserror = { workspace = true }
+toml = { workspace = true }
+clap = { version = "4", features = ["derive"] }
+prometheus = "0.13"
+tiny_http = "0.12"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["json", "env-filter"] }
+
+[[bin]]
+name = "engine"
+path = "src/bin/engine.rs"
+
+[[bin]]
+name = "replay"
+path = "src/bin/replay.rs"
+
+[[bin]]
+name = "killswitch"
+path = "src/bin/killswitch.rs"
+
+[[bin]]
+name = "simbroker"
+path = "src/bin/simbroker.rs"

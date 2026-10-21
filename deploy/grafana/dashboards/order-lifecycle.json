@@ -1,0 +1,108 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "panels": [
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 0 },
+      "id": 1,
+      "targets": [{ "expr": "atp_open_orders", "refId": "A" }],
+      "title": "Open orders",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 0 },
+      "id": 2,
+      "targets": [{ "expr": "atp_halted", "refId": "A" }],
+      "title": "Partition halted",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 0 },
+      "id": 3,
+      "targets": [{ "expr": "atp_kill_switch", "refId": "A" }],
+      "title": "Kill switch latched",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": {}, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 8 },
+      "id": 4,
+      "targets": [{ "expr": "atp_orders_by_state", "legendFormat": "{{state}}", "refId": "A" }],
+      "title": "Orders by lifecycle state",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "ops" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 8 },
+      "id": 5,
+      "targets": [{ "expr": "sum(rate(atp_orders_total[1m])) by (event)", "legendFormat": "{{event}}", "refId": "A" }],
+      "title": "Order event rate",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "ops" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 17 },
+      "id": 6,
+      "targets": [{ "expr": "sum(rate(atp_risk_rejects_total[1m])) by (rule)", "legendFormat": "{{rule}}", "refId": "A" }],
+      "title": "Risk rejects by rule",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "ms" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 17 },
+      "id": 7,
+      "targets": [{ "expr": "atp_feed_lag_ms", "refId": "A" }],
+      "title": "Feed lag",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "currencyINR" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 26 },
+      "id": 8,
+      "targets": [{ "expr": "atp_pnl_inr", "refId": "A" }],
+      "title": "PnL (INR, dashboard only)",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "currencyINR" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 26 },
+      "id": 9,
+      "targets": [{ "expr": "atp_margin_use_inr", "refId": "A" }],
+      "title": "Margin use (INR)",
+      "type": "stat"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 26 },
+      "id": 10,
+      "targets": [{ "expr": "atp_recon_mismatches", "refId": "A" }],
+      "title": "Recon mismatches",
+      "type": "stat"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["atp", "orders"],
+  "templating": { "list": [] },
+  "time": { "from": "now-15m", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Order lifecycle",
+  "uid": "atp-orders",
+  "version": 1
+}

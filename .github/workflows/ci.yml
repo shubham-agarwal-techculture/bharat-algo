@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: format
+        run: cargo fmt --all -- --check
+      - name: clippy
+        run: cargo clippy -p atp_core -p atp_runtime --all-targets -- -D warnings
+      - name: core has no clock or randomness
+        run: |
+          if grep -RInE 'std::time|SystemTime|Instant|rand::' crates/atp_core/src; then
+            echo "atp_core must stay free of clocks and randomness"
+            exit 1
+          fi
+      - name: test
+        run: cargo test --workspace
+      - name: paper demo
+        run: ./scripts/demo.sh
+      - name: strategy sdk parses
+        run: python3 -m py_compile sdk/python/atp_strategy.py
